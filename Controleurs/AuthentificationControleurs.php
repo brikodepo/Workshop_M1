@@ -32,7 +32,7 @@ class AuthController
             exit();
         }
 
-        include 'vues/DossiersMedicales.php';
+        include 'Vues/DossierMédical1.php';
     }
 
     public function logout()
