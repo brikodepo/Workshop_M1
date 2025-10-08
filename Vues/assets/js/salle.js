@@ -32,24 +32,6 @@ function ajouterMessage(texte) {
     }
   }
 }
-document.querySelector(".valider").addEventListener("click", () => {
-  if (document.querySelector(".select")) {
-    idObjet = document.querySelector(".select").id;
-    console.log(idObjet);
-    if (idObjet == "Clamp") {
-      ajouterMessage("✅ Bon choix ! L’action réussit !");
-      clearInterval(interval); // facultatif, si tu veux arrêter le timer en cas de réussite
-    } else {
-      ajouterMessage("❌ Mauvais choix ! Vous perdez 60 secondes...");
-      tempsRestant -= 60;
-      if (tempsRestant < 0) tempsRestant = 0;
-
-      // Met à jour immédiatement la barre
-      const pourcentage = ((tempsTotal - tempsRestant) / tempsTotal) * 100;
-      barre.style.width = pourcentage + "%";
-    }
-  }
-});
 // Gère les clics sur les objets
 document.querySelectorAll(".objet").forEach((objet) => {
   objet.addEventListener("click", () => {
@@ -64,19 +46,34 @@ document.querySelectorAll(".objet").forEach((objet) => {
   });
 });
 
-// Timer progressif (par exemple 60 secondes)
-let tempsTotal = 600; // secondes
-let tempsRestant = tempsTotal;
-
 const barre = document.querySelector(".timer-bar");
+const tempsTotal = 600;
+// Timer synchronisé
+function mettreAJourTimer() {
+  fetch("../Main/timer.php")
+    .then((res) => res.json())
+    .then((data) => {
+      const tempsRestant = data.tempsRestant;
+      barre.style.width =
+        ((tempsTotal - tempsRestant) / tempsTotal) * 100 + "%";
+      if (tempsRestant <= 0) ajouterMessage("⏰ Temps écoulé !");
+    });
+}
 
-const interval = setInterval(() => {
-  tempsRestant--;
-  const pourcentage = ((tempsTotal - tempsRestant) / tempsTotal) * 100;
-  barre.style.width = pourcentage + "%";
+setInterval(mettreAJourTimer, 1000);
+mettreAJourTimer();
 
-  if (tempsRestant <= 0) {
-    clearInterval(interval);
-    ajouterMessage("Temps écoulé ! Fin de la salle.");
+// Validation
+document.querySelector(".valider").addEventListener("click", () => {
+  const select = document.querySelector(".select");
+  if (!select) {
+    ajouterMessage("❗ Sélectionnez un objet avant de valider.");
+    return;
   }
-}, 1000);
+  if (select.id.toLowerCase() === "clamp") {
+    ajouterMessage("✅ Bon choix !");
+  } else {
+    ajouterMessage("❌ Mauvais choix ! -60 secondes !");
+    fetch("../Main/penalite.php").then((res) => res.json());
+  }
+});
