@@ -135,3 +135,116 @@ tr:hover {
     background-color: bisque;
     z-index:-3;
 }
+.bodyOpération {
+  background-color: #0f2233;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.container {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.salle {
+  position: relative;
+  background-color: #1a3248;
+  border: 2px solid #3b6ea5;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 400px;
+  margin-top: 20px;
+  border-radius: 25px;
+}
+.DivImg{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.objet {
+  width: 120px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.objet:hover {
+  transform: scale(1.1);
+}
+
+.timer-container {
+  width: 100%;
+  height: 20px;
+  background: #c20909;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.timer-bar {
+  width: 0;
+  height: 100%;
+  background: #244763;
+  transition: width 1s linear;
+}
+
+.log {
+  margin-top: 20px;
+  background: #132e42;
+  border-radius: 10px;
+  padding: 0px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  border-radius: 25px;
+  border: 2px solid #3b6ea5;
+  height: 200px;             /* Hauteur fixe du journal */
+  overflow-y: auto;          /* Barre de défilement verticale si nécessaire */
+  overflow-x: hidden;        /* Évite le scroll horizontal */
+  scrollbar-width: thin;     /* Scrollbar fine (Firefox) */
+}
+
+/* Pour un style de scrollbar plus propre sur Chrome, Edge, Safari */
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background-color: #3b6ea5;
+  border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background-color: #0f2233;
+}
+.messages li{
+    margin:10px 10px;
+
+}
+.select{
+    background-color: #1ed760;
+}
+.btnValidation{
+    margin-top:20px;
+}
+button{
+    border-radius: 25px;
+  border: 4px solid #3b6ea5;
+  background-color: #0f6e31;
+  color:white;
+  font-size: medium;
+  padding: 10px 20px;
+  cursor: pointer;
+}
