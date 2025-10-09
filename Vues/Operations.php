@@ -15,24 +15,28 @@
 
     <div class="container">
         <h1>Salle d'opération</h1>
-
+        <div class="infosDroitCours">
+            <h2>numéro de dossier :<h4>123584566658</h4>
+            </h2>
+        </div>
         <!-- Timer -->
         <div class="timer-container">
             <div class="timer-bar"></div>
         </div>
 
         <!-- Zone interactive -->
+        <h1>Solution</h1>
         <div class="salle">
-            <div class="DivImg"><img src="./assets/img/bistouri.webp" id="bistouri" class="objet" alt="Bistouri"></div>
-            <div class="DivImg"><img src="./assets/img/moniteur.webp" id="moniteur" class="objet" alt="Moniteur"></div>
-            <div class="DivImg"><img src="./assets/img/seringue.webp" id="seringue" class="objet" alt="Seringue"></div>
+            <div class="DivImg"><img src="./assets/img/bistouri.webp" id="bistouri" class="objet" alt="bistouri"></div>
+            <div class="DivImg"><img src="./assets/img/moniteur.webp" id="moniteur" class="objet" alt="moniteur"></div>
+            <div class="DivImg"><img src="./assets/img/seringue.webp" id="seringue" class="objet" alt="seringue"></div>
             <div class="DivImg"><img src="./assets/img/anesthesie.webp" id="anesthesie" class="objet" alt="anesthesie">
             </div>
             <div class="DivImg"><img src="./assets/img/catheter.webp" id="catheter" class="objet" alt="catheter"></div>
-            <div class="DivImg"><img src="./assets/img/Clamp.webp" id="Clamp" class="objet" alt="Clamp"></div>
+            <div class="DivImg"><img src="./assets/img/clamp.webp" id="clamp" class="objet" alt="clamp"></div>
             <div class="DivImg"><img src="./assets/img/masque.webp" id="masque" class="objet" alt="masque"></div>
-            <div class="DivImg"><img src="./assets/img/Pincehemostatique.webp" id="Pincehemostatique" class="objet"
-                    alt="Pincehemostatique"></div>
+            <div class="DivImg"><img src="./assets/img/pincehemostatique.webp" id="pincehemostatique" class="objet"
+                    alt="pincehemostatique"></div>
             <div class="DivImg"><img src="./assets/img/pinceprehension.webp" id="pinceprehension" class="objet"
                     alt="pinceprehension"></div>
             <div class="DivImg"><img src="./assets/img/defebrillateur.webp" id="defebrillateur" class="objet"
@@ -48,7 +52,10 @@
             <button class="valider">Valider</button>
         </div>
     </div>
-
+    <div class="panneauPERDU">
+        <h1> VOUS AVEZ PERDU </h1>
+        <a>revenir à la page principale</a>
+    </div>
     <script src="./assets/js/salle.js"></script>
 </body>
 
