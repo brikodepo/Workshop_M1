@@ -3,18 +3,20 @@ require_once "config.php";
 
 // Si déjà connecté à une salle, rediriger vers la salle
 if (isset($_SESSION['pseudo']) && isset($_SESSION['room_code'])) {
-    header("Location: room.php");
-    exit;
+  header("Location: room.php");
+  exit;
 }
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Accueil</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Accueil</title>
+  <link rel="stylesheet" href="./Vues/assets/css/style.css">
 </head>
-<body>
+
+<body class="bodyOpération">
   <div class="container">
     <h1>Bienvenue</h1>
 
@@ -29,4 +31,5 @@ if (isset($_SESSION['pseudo']) && isset($_SESSION['room_code'])) {
     </form>
   </div>
 </body>
+
 </html>
