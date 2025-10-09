@@ -716,6 +716,21 @@ if ($_SESSION['role'] !== 'archiviste') {
         <h1> VOUS AVEZ PERDU </h1>
         <a>revenir à la page principale</a>
     </div>
+     <!-- ✅ CHAT COMMUN -->
+<div id="chat-container">
+    <div id="chat-header">💬 Chat Commun</div>
+
+    <div id="chat-messages"></div>
+
+    <form id="chat-form">
+        <input type="hidden" id="username" value="<?= htmlspecialchars($_SESSION['pseudo']) ?>">
+        <input type="text" id="chat-input" placeholder="Écrire un message..." autocomplete="off">
+        <button type="submit">Envoyer</button>
+    </form>
+</div>
+
+
+<script src="./Vues/assets/js/chat.js"></script>
     <script src="./Vues/assets/js/salle.js"></script>
 </body>
 
@@ -723,5 +738,6 @@ if ($_SESSION['role'] !== 'archiviste') {
 
 </div>
 </body>
+
 
 </html>
