@@ -16,10 +16,10 @@ $code = $_SESSION['room_code'];
 <head>
   <meta charset="UTF-8">
   <title>Salle <?= htmlspecialchars($code) ?></title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./Vues/assets/css/style.css">
 </head>
 
-<body>
+<body class="bodyOpération">
   <div class="container">
     <h1>Salle</h1>
     <p>Code de la salle : <strong><?= htmlspecialchars($code) ?></strong></p>
@@ -42,9 +42,9 @@ $code = $_SESSION['room_code'];
     <?php else: ?>
       <p>Vous avez choisi le rôle : <strong><?= htmlspecialchars($_SESSION['role']) ?></strong></p>
       <?php if ($_SESSION['role'] === 'chirurgien'): ?>
-        <a href="./Main/Chirurgien-start-timer.php">Aller à la page Chirurgien</a>
+        <a class="goBtn" href="./Main/Chirurgien-start-timer.php">Aller à la page Chirurgien</a>
       <?php elseif ($_SESSION['role'] === 'archiviste'): ?>
-        <a href="./Main/Archiviste-start-timer.php">Aller à la page Archiviste</a>
+        <a class="goBtn" href="./Main/Archiviste-start-timer.php">Aller à la page Archiviste</a>
       <?php endif; ?>
     <?php endif; ?>
 
