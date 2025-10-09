@@ -11,6 +11,7 @@ $pseudo = trim($_POST['pseudo']);
 // Générer un code unique à 6 chiffres
 do {
     $stmt = $pdo->prepare("SHOW TABLES IN workshop_m1");
+    var_dump("========");
     var_dump($stmt->execute());
     $code = strval(rand(100000, 999999));
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM rooms WHERE code = ?");
