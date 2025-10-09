@@ -1,18 +1,5 @@
 <?php
 require_once "config.php";
-try {
-    $stmt = $pdo->query("SHOW TABLES");
-    $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-    echo "<pre>📋 Tables trouvées dans la base :\n";
-    print_r($tables);
-    echo "</pre>";
-
-    echo "<p>Base actuelle : " . $pdo->query("SELECT DATABASE()")->fetchColumn() . "</p>";
-    exit; // ← arrête ici temporairement pour tester
-} catch (PDOException $e) {
-    die("Erreur SQL : " . $e->getMessage());
-}
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_POST['pseudo'])) {
     header("Location: index.php");
@@ -23,9 +10,6 @@ $pseudo = trim($_POST['pseudo']);
 
 // Générer un code unique à 6 chiffres
 do {
-    $stmt = $pdo->prepare("SHOW TABLES IN workshop_m1");
-    var_dump("========");
-    var_dump($stmt->execute());
     $code = strval(rand(100000, 999999));
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM rooms WHERE code = ?");
     $stmt->execute([$code]);
@@ -48,3 +32,4 @@ $_SESSION['room_code'] = $code;
 
 header("Location: room.php");
 exit;
+
