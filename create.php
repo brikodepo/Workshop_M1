@@ -1,5 +1,18 @@
 <?php
 require_once "config.php";
+try {
+    $stmt = $pdo->query("SHOW TABLES");
+    $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    echo "<pre>📋 Tables trouvées dans la base :\n";
+    print_r($tables);
+    echo "</pre>";
+
+    echo "<p>Base actuelle : " . $pdo->query("SELECT DATABASE()")->fetchColumn() . "</p>";
+    exit; // ← arrête ici temporairement pour tester
+} catch (PDOException $e) {
+    die("Erreur SQL : " . $e->getMessage());
+}
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_POST['pseudo'])) {
     header("Location: index.php");
