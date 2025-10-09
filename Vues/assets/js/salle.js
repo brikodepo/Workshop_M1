@@ -11,7 +11,7 @@ const actions = {
   seringue: "Seringue : C'est une seringue anti-allergie.",
   catheter: "Cathéter : Introduire un liquide (perfusion) ou prélever du sang.",
   anesthesie:
-    "Machine d’anesthésie : Mélanger et délivrer les gaz anesthésiques et l’oxygène.",
+    "Appareil d’anesthésie : Mélanger et délivrer les gaz anesthésiques et l’oxygène.",
   defebrillateur:
     "Défibrillateur : Rétablir le rythme cardiaque en cas d’arrêt.",
 };
@@ -154,3 +154,4 @@ document.querySelector(".valider").addEventListener("click", () => {
     fetch("./Main/penalite.php").then((res) => res.json());
   }
 });
+
