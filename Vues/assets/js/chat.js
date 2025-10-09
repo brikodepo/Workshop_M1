@@ -1,51 +1,73 @@
-const websocketUrl = 'ws://192.168.1.89:8080'; 
-const conn = new WebSocket(websocketUrl);
-
+onst username = document.getElementById('username').value || 'Utilisateur';
+const ws = new WebSocket('ws://localhost:8080'); 
 const messagesDiv = document.getElementById('chat-messages');
 const form = document.getElementById('chat-form');
 const input = document.getElementById('chat-input');
-const username = document.getElementById('username').value;
 
-// Connexion
-conn.onopen = () => appendMessage('Système', '✅ Connecté au chat', 'system');
-
-// Réception d’un message
-conn.onmessage = (e) => {
-  const data = JSON.parse(e.data);
-  const self = data.username === username;
-  appendMessage(data.username, data.message, self ? 'self' : 'user');
+// Quand la connexion est établie 
+ws.onopen = () => {
+    appendMessage('Système', 'Connecté au chat !', 'system');
 };
 
-// Fermeture / erreur
-conn.onclose = () => appendMessage('Système', '🔴 Déconnecté du chat', 'system');
-conn.onerror = (err) => console.error('Erreur WebSocket :', err);
+//  Quand un message arrive du serveur 
+ws.onmessage = (event) => {
+    try {
+        const data = JSON.parse(event.data);
+        const sender = data.username;
+        const message = data.message;
+        const type = sender === username ? 'user' : 'other';
+        appendMessage(sender, message, type);
+    } catch (err) {
+        console.error('Erreur de parsing du message', err);
+    }
+};
+
+// Gestion des erreurs 
+ws.onerror = (err) => {
+    console.error('Erreur WebSocket :', err);
+    appendMessage('Système', 'Erreur de connexion.', 'system');
+};
+
+// Déconnexion du serveur 
+ws.onclose = () => {
+    appendMessage('Système', 'Chat déconnecté.', 'system');
+};
 
 // Envoi d’un message
 form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const msg = input.value.trim();
-  if (!msg || conn.readyState !== WebSocket.OPEN) return;
+    e.preventDefault();
+    const message = input.value.trim();
 
-  const payload = JSON.stringify({ username, message: msg });
-  conn.send(payload);
-  input.value = '';
-  appendMessage(username, msg, 'self');
+    if (message.length && ws.readyState === WebSocket.OPEN) {
+        const payload = JSON.stringify({
+            username: username,
+            message: message,
+        });
+        ws.send(payload);
+        input.value = '';
+        input.focus();
+    }
 });
 
-// Afficher un message dans la room
+// Afficher un message dans la box 
 function appendMessage(sender, msg, type) {
-  const div = document.createElement('div');
-  div.classList.add('message');
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', type);
 
-  if (type === 'system') div.classList.add('system');
-  else if (type === 'self') div.classList.add('self');
+    if (type === 'system') {
+        msgDiv.textContent = `(${new Date().toLocaleTimeString()}) ${msg}`;
+    } else {
+        msgDiv.innerHTML = `<strong>${sender}:</strong> ${msg}`;
+    }
 
-  if (type === 'system') {
-    div.textContent = msg;
-  } else {
-    div.innerHTML = `<strong>${sender}</strong> : ${msg}`;
-  }
-
-  messagesDiv.appendChild(div);
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    messagesDiv.appendChild(msgDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight; 
 }
+//plier/deplier
+document.getElementById('chat-header').addEventListener('click', () => {
+    const body = document.getElementById('chat-messages');
+    const form = document.getElementById('chat-form');
+    const isVisible = body.style.display !== 'none';
+    body.style.display = form.style.display = isVisible ? 'none' : 'flex';
+});
+
