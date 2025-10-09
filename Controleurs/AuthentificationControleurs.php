@@ -32,7 +32,7 @@ class AuthController
             exit();
         }
 
-        include 'Vues/DossierMédical1.php';
+        include 'Vues/DossierMédical.php';
     }
 
     public function logout()
@@ -41,4 +41,5 @@ class AuthController
         header('Location: index.php?action=login');
         exit();
     }
+
 }
