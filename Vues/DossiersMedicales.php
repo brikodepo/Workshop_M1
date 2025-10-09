@@ -691,34 +691,17 @@
             </div>
         </div>
     </div>
-    <div id="timer">01:00:00</div>
-  <button onclick="startTimer()">Démarrer le timer</button>
+    <div class="timer-display">Chargement...</div>
 
-  <script>
-  let tempsRestant = 3600; // 1 heure en secondes
 
-  function formatTemps(secondes) {
-    const h = String(Math.floor(secondes / 3600)).padStart(2, '0');
-    const m = String(Math.floor((secondes % 3600) / 60)).padStart(2, '0');
-    const s = String(secondes % 60).padStart(2, '0');
-    return `${h}:${m}:${s}`;
-  }
-
-  const timerElement = document.getElementById('timer');
-
-  const interval = setInterval(() => {
-    tempsRestant--;
-    timerElement.textContent = formatTemps(tempsRestant);
-
-    if (tempsRestant <= 0) {
-      clearInterval(interval);
-      timerElement.textContent = "Temps écoulé !";
-    }
-  }, 1000);
-</script>
     <div class="fondDossier">
     </div>
+
+    <div class="panneauPERDU">
+        <h1> VOUS AVEZ PERDU </h1>
+        <a>revenir à la page principale</a>
+    </div>
+    <script src="./Vues/assets/js/salle.js"></script>
 </body>
 
 </html>
-
