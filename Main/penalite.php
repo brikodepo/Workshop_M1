@@ -15,9 +15,9 @@ $pdo = new PDO(
     $user,
     $pass
 );
-$groupeId = $_SESSION['groupeId'] ?? '1';
+$room_code = $_SESSION['room_code'] ?? '1';
 
-$stmt = $pdo->prepare("UPDATE timers SET temps_total = temps_total - 60 WHERE groupeId = ?");
-$stmt->execute([$groupeId]);
+$stmt = $pdo->prepare("UPDATE rooms SET temps_total = temps_total - 60 WHERE code = ?");
+$stmt->execute([$room_code]);
 
 echo json_encode(['success' => true]);

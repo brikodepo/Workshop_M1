@@ -16,9 +16,11 @@ do {
     $count = $stmt->fetchColumn();
 } while ($count > 0);
 
+$timer_start = '0000-00-00 00:00:00';
 // Créer la salle
-$stmt = $pdo->prepare("INSERT INTO rooms(code) VALUES (?)");
-$stmt->execute([$code]);
+$stmt = $pdo->prepare("INSERT INTO rooms(code, timer_start, temps_total) VALUES (?, ?, ?)");
+$stmt->execute([$code, $timer_start, 600]);
+
 
 // Ajouter le joueur
 $stmt = $pdo->prepare("INSERT INTO players(pseudo, room_code) VALUES (?, ?)");

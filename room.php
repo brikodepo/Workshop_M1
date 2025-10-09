@@ -3,8 +3,8 @@ require_once "config.php";
 
 // Si pas de session valable, rediriger à l’accueil
 if (!isset($_SESSION['pseudo']) || !isset($_SESSION['room_code'])) {
-    header("Location: index.php");
-    exit;
+  header("Location: index.php");
+  exit;
 }
 
 $pseudo = $_SESSION['pseudo'];
@@ -12,11 +12,13 @@ $code = $_SESSION['room_code'];
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Salle <?= htmlspecialchars($code) ?></title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <div class="container">
     <h1>Salle</h1>
@@ -27,24 +29,24 @@ $code = $_SESSION['room_code'];
     <ul id="playerList"></ul>
     <h2>Choisissez votre rôle :</h2>
 
-<?php if (!isset($_SESSION['role'])): ?>
-  <form method="POST" action="set_role.php">
-    <input type="hidden" name="role" value="chirurgien">
-    <button type="submit">Je suis Chirurgien</button>
-  </form>
+    <?php if (!isset($_SESSION['role'])): ?>
+      <form method="POST" action="set_role.php">
+        <input type="hidden" name="role" value="chirurgien">
+        <button type="submit">Je suis Chirurgien</button>
+      </form>
 
-  <form method="POST" action="set_role.php">
-    <input type="hidden" name="role" value="archiviste">
-    <button type="submit">Je suis Archiviste</button>
-  </form>
-<?php else: ?>
-  <p>Vous avez choisi le rôle : <strong><?= htmlspecialchars($_SESSION['role']) ?></strong></p>
-  <?php if ($_SESSION['role'] === 'chirurgien'): ?>
-    <a href="chirurgien.php">Aller à la page Chirurgien</a>
-  <?php elseif ($_SESSION['role'] === 'archiviste'): ?>
-    <a href="archiviste.php">Aller à la page Archiviste</a>
-  <?php endif; ?>
-<?php endif; ?>
+      <form method="POST" action="set_role.php">
+        <input type="hidden" name="role" value="archiviste">
+        <button type="submit">Je suis Archiviste</button>
+      </form>
+    <?php else: ?>
+      <p>Vous avez choisi le rôle : <strong><?= htmlspecialchars($_SESSION['role']) ?></strong></p>
+      <?php if ($_SESSION['role'] === 'chirurgien'): ?>
+        <a href="./Main/Chirurgien-start-timer.php">Aller à la page Chirurgien</a>
+      <?php elseif ($_SESSION['role'] === 'archiviste'): ?>
+        <a href="./Main/Archiviste-start-timer.php">Aller à la page Archiviste</a>
+      <?php endif; ?>
+    <?php endif; ?>
 
     <form method="POST" action="logout.php" style="margin-top:1em;">
       <button type="submit">Quitter la salle</button>
@@ -71,4 +73,5 @@ $code = $_SESSION['room_code'];
     updatePlayers();
   </script>
 </body>
+
 </html>

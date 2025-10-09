@@ -8,17 +8,19 @@ if ($_SESSION['role'] !== 'archiviste') {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archiviste</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./Vues/assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
+
 <body>
 
-  
+
     <div class="patientInfo">
         <div>
             <h1>Bienvenue Archiviste</h1>
@@ -36,7 +38,7 @@ if ($_SESSION['role'] !== 'archiviste') {
                         <h3> Age : 39 ans</h3>
                     </div>
                     <div class="portrait">
-                        <img src="./assets/img/patient1.webp">
+                        <img src="./Vues/assets/img/patient1.webp">
                     </div>
                 </div>
                 <h3> sexe : &#9745; femme &#9744; homme</h3>
@@ -149,7 +151,7 @@ if ($_SESSION['role'] !== 'archiviste') {
                         <h3> Age : 33 ans</h3>
                     </div>
                     <div class="portrait">
-                        <img src="./assets/img/patient1.webp">
+                        <img src="./Vues/assets/img/patient1.webp">
                     </div>
                 </div>
                 <h3> sexe : &#9745; femme &#9744; homme</h3>
@@ -262,7 +264,7 @@ if ($_SESSION['role'] !== 'archiviste') {
                         <h3> Age : 40 ans</h3>
                     </div>
                     <div class="portrait">
-                        <img src="./assets/img/patient1.webp">
+                        <img src="./Vues/assets/img/patient1.webp">
                     </div>
                 </div>
                 <h3> sexe : &#9744; femme &#9745; homme</h3>
@@ -375,7 +377,7 @@ if ($_SESSION['role'] !== 'archiviste') {
                         <h3> Age : 25 ans</h3>
                     </div>
                     <div class="portrait">
-                        <img src="./assets/img/patient1.webp">
+                        <img src="./Vues/assets/img/patient1.webp">
                     </div>
                 </div>
                 <h3> sexe : &#9745; femme &#9744; homme</h3>
@@ -488,7 +490,7 @@ if ($_SESSION['role'] !== 'archiviste') {
                         <h3> Age : 21 ans</h3>
                     </div>
                     <div class="portrait">
-                        <img src="./assets/img/patient1.webp">
+                        <img src="./Vues/assets/img/patient1.webp">
                     </div>
                 </div>
                 <h3> sexe : &#9744; femme &#9745; homme</h3>
@@ -601,7 +603,7 @@ if ($_SESSION['role'] !== 'archiviste') {
                         <h3> Age : 35 ans</h3>
                     </div>
                     <div class="portrait">
-                        <img src="./assets/img/patient1.webp">
+                        <img src="./Vues/assets/img/patient1.webp">
                     </div>
                 </div>
                 <h3> sexe : &#9745; femme &#9744; homme</h3>
@@ -714,11 +716,12 @@ if ($_SESSION['role'] !== 'archiviste') {
         <h1> VOUS AVEZ PERDU </h1>
         <a>revenir à la page principale</a>
     </div>
-    <script src="./assets/js/salle.js"></script>
+    <script src="./Vues/assets/js/salle.js"></script>
 </body>
+
 </html>
 
-    </div>
+</div>
 </body>
 
 </html>

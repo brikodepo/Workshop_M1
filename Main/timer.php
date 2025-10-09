@@ -16,11 +16,11 @@ $pdo = new PDO(
     $user,
     $pass
 );
-$groupeId = $_SESSION['groupeId'] ?? '1';
+$code = $_SESSION['room_code'] ?? '1';
 
 
-$stmt = $pdo->prepare("SELECT * FROM timers WHERE groupeId = ?");
-$stmt->execute([$groupeId]);
+$stmt = $pdo->prepare("SELECT * FROM rooms WHERE code = ?");
+$stmt->execute([$code]);
 $timer = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($timer) {

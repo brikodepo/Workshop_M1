@@ -69,7 +69,7 @@ const tempsTotal = 600;
 // Timer synchronisé
 if (barre) {
   function mettreAJourTimer() {
-    fetch("../Main/timer.php")
+    fetch("./Main/timer.php")
       .then((res) => res.json())
       .then((data) => {
         const tempsRestant = data.tempsRestant;
@@ -151,6 +151,6 @@ document.querySelector(".valider").addEventListener("click", () => {
     ajouterMessage("✅ Bon choix !");
   } else {
     ajouterMessage("❌ Mauvais choix ! -60 secondes !");
-    fetch("../Main/penalite.php").then((res) => res.json());
+    fetch("./Main/penalite.php").then((res) => res.json());
   }
 });
