@@ -14,7 +14,6 @@ body{
     font-family: "Special Elite", system-ui;
     font-weight: 400;
     font-style: normal;
-    width:100vw;
     display:flex;
     justify-content: center;
 }
@@ -183,7 +182,12 @@ tr:hover {
   overflow: hidden;
   margin: 10px 0;
 }
-
+.timer-display{
+  position: fixed;
+  top:20px;
+  left:20px;
+  font-size: 25px;
+}
 .timer-bar {
   width: 0;
   height: 100%;
@@ -246,5 +250,34 @@ button{
   color:white;
   font-size: medium;
   padding: 10px 20px;
+  cursor: pointer;
+}
+.infosDroitCours h2{
+ width: 25%;
+}
+.infosDroitCours{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.panneauPERDU{
+  position: fixed;
+  width:80vw;
+  height:80vh;
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10vh 0px;
+  background-color: burlywood;
+  border: #000 5px solid;
+}
+.panneauPERDU h1{
+ color:red;
+ font-size:75px;
+}
+.panneauPERDU a{
+  font-size:50px;
+  color: #000;
   cursor: pointer;
 }
